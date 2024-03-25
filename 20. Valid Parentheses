@@ -1,0 +1,13 @@
+class Solution:
+    def isValid(self, s: str) -> bool:
+        a = []
+        brackets = {')': '(', '}': '{', ']': '['}
+        
+        for i in s:
+            if i in brackets.values():
+                a.append(i)
+            elif i in brackets.keys():
+                if not a or a.pop() != brackets[i]:
+                    return False
+        
+        return not a
