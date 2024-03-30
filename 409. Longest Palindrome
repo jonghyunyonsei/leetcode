@@ -1,0 +1,21 @@
+class Solution:
+    def longestPalindrome(self, s: str) -> int:
+        char_counts = {}
+    
+        for char in s:
+            char_counts[char] = char_counts.get(char, 0) + 1
+    
+        palindrome_length = 0
+        odd_count_seen = False
+    
+        for count in char_counts.values():
+            if count % 2 == 0:
+                palindrome_length += count
+            else:
+                palindrome_length += count - 1
+                odd_count_seen = True
+    
+        if odd_count_seen:
+            palindrome_length += 1
+    
+        return palindrome_length
