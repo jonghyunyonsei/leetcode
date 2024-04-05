@@ -1,0 +1,17 @@
+class Solution:
+    def findErrorNums(self, nums: List[int]) -> List[int]:
+        n = len(nums)
+        expected_sum = n * (n + 1) // 2
+        actual_sum = sum(nums)
+    
+        missing_number = expected_sum - actual_sum
+    
+        seen = set()
+        duplicate_number = None
+        for num in nums:
+            if num in seen:
+                duplicate_number = num
+                break
+            seen.add(num)
+    
+        return [duplicate_number, duplicate_number + missing_number]  
