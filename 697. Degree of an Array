@@ -1,0 +1,26 @@
+class Solution:
+    def findShortestSubArray(self, nums: List[int]) -> int:
+        freq = {}
+        first_occurrence = {}
+        last_occurrence = {}
+    
+        for i, num in enumerate(nums):
+            if num not in freq:
+                freq[num] = 1
+                first_occurrence[num] = i
+            else:
+                freq[num] += 1
+    
+        for i in range(len(nums) - 1, -1, -1):
+            if nums[i] not in last_occurrence:
+                last_occurrence[nums[i]] = i
+    
+        max_freq = max(freq.values())
+    
+        min_length = len(nums)
+    
+        for num, f in freq.items():
+            if f == max_freq:
+                min_length = min(min_length, last_occurrence[num] - first_occurrence[num] + 1)
+    
+        return min_length
