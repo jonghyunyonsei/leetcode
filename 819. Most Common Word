@@ -1,0 +1,13 @@
+import re
+from collections import Counter
+
+class Solution:
+    def mostCommonWord(self, paragraph: str, banned: List[str]) -> str:
+
+        words = re.findall(r'\w+', paragraph.lower())
+        word_count = Counter(words)
+    
+        for banned_word in banned:
+            word_count.pop(banned_word, None)
+    
+        return max(word_count, key=word_count.get)
