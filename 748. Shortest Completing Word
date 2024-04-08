@@ -1,0 +1,20 @@
+import collections
+import re
+
+class Solution:
+    def shortestCompletingWord(self, licensePlate: str, words: List[str]) -> str:
+
+        licensePlate = re.sub('[^a-zA-Z]', '', licensePlate.lower())  
+        plate_counter = collections.Counter(licensePlate)
+    
+        shortest_word = None
+        min_length = float('inf')
+    
+        for word in words:
+            word_counter = collections.Counter(word.lower())
+            if all(word_counter[char] >= count for char, count in plate_counter.items()):
+                if len(word) < min_length:
+                    shortest_word = word
+                    min_length = len(word)
+    
+        return shortest_word    
