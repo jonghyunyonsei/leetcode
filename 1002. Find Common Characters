@@ -1,0 +1,15 @@
+class Solution:
+    def commonChars(self, words: List[str]) -> List[str]:
+        from collections import Counter
+
+        common_counts = Counter(words[0])
+    
+        for word in words[1:]:
+            current_counts = Counter(word)
+            common_counts &= current_counts
+
+        result = []
+        for char, count in common_counts.items():
+            result.extend([char] * count)  
+
+        return result   
