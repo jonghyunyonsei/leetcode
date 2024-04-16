@@ -1,0 +1,14 @@
+class Solution:
+    def isAlienSorted(self, words: List[str], order: str) -> bool:
+        order_index = {char: index for index, char in enumerate(order)}
+
+        def alien_value(word):
+            return [order_index[char] for char in word]
+
+        alien_words = [alien_value(word) for word in words]
+
+        for i in range(len(alien_words) - 1):
+            if alien_words[i] > alien_words[i + 1]:
+                return False
+
+        return True        
