@@ -1,0 +1,16 @@
+class Solution:
+    def addToArrayForm(self, num: List[int], k: int) -> List[int]:
+        num.reverse()
+    
+        carry = k
+        for i in range(len(num)):
+            carry += num[i]
+            num[i] = carry % 10  
+            carry //= 10         
+
+        while carry > 0:
+            num.append(carry % 10)
+            carry //= 10
+
+        num.reverse()
+        return num      
