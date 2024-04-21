@@ -1,0 +1,23 @@
+class Solution:
+    def tictactoe(self, moves: List[List[int]]) -> str:
+        board = [['' for _ in range(3)] for _ in range(3)]
+    
+        def is_winner(player):
+            for i in range(3):
+                if all(board[i][j] == player for j in range(3)) or all(board[j][i] == player for j in range(3)):
+                    return True
+            if board[0][0] == board[1][1] == board[2][2] == player or board[0][2] == board[1][1] == board[2][0] == player:
+                return True
+            return False
+    
+        player = 'X'  
+        for i, (row, col) in enumerate(moves):
+            board[row][col] = player
+            if is_winner(player):
+                return 'A' if player == 'X' else 'B'
+            player = 'O' if player == 'X' else 'X'
+    
+        if len(moves) == 9:
+            return "Draw"
+        else:
+            return "Pending"        
