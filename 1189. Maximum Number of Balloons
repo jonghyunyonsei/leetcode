@@ -1,0 +1,14 @@
+class Solution:
+    def maxNumberOfBalloons(self, text: str) -> int:
+        from collections import Counter
+    
+        char_count = Counter(text)
+    
+        balloon_count = Counter('balloon')
+    
+        max_balloons = float('inf')
+        for char, count in balloon_count.items():
+            if char_count[char] // count < max_balloons:
+                max_balloons = char_count[char] // count
+    
+        return max_balloons        
