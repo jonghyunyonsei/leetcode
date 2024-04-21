@@ -1,0 +1,9 @@
+class Solution:
+    def uniqueOccurrences(self, arr: List[int]) -> bool:
+        from collections import Counter
+    
+        frequency = Counter(arr)
+    
+        counts = list(frequency.values())
+    
+        return len(counts) == len(set(counts))  
