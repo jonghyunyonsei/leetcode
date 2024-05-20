@@ -1,0 +1,24 @@
+class Solution:
+    def sortString(self, s: str) -> str:
+        char_count = Counter(s)
+    
+        result = []
+    
+        unique_chars = sorted(char_count.keys())
+    
+        while char_count:
+            for char in unique_chars:
+                if char in char_count:
+                    result.append(char)
+                    char_count[char] -= 1
+                    if char_count[char] == 0:
+                        del char_count[char]
+        
+            for char in reversed(unique_chars):
+                if char in char_count:
+                    result.append(char)
+                    char_count[char] -= 1
+                    if char_count[char] == 0:
+                        del char_count[char]
+    
+        return ''.join(result)        
