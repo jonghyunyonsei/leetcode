@@ -1,0 +1,11 @@
+class Solution:
+    def minStartValue(self, nums: List[int]) -> int:
+        min_start_value = 1
+        current_sum = min_start_value
+
+        for num in nums:
+            current_sum += num
+            if current_sum < 1:
+                min_start_value += 1 - current_sum
+                current_sum = 1 
+        return min_start_value        
