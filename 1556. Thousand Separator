@@ -1,0 +1,11 @@
+class Solution:
+    def thousandSeparator(self, n: int) -> str:
+        str_n = str(n)
+    
+        reversed_str_n = str_n[::-1]
+    
+        parts = [reversed_str_n[i:i+3] for i in range(0, len(reversed_str_n), 3)]
+    
+        formatted_str = '.'.join(parts)[::-1]
+    
+        return formatted_str 
