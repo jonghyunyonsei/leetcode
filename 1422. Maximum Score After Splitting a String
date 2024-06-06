@@ -1,0 +1,16 @@
+class Solution:
+    def maxScore(self, s: str) -> int:
+        total_ones = s.count('1')
+        max_score = 0
+        zeros_in_left = 0
+        ones_in_right = total_ones
+
+        for i in range(len(s) - 1):
+            if s[i] == '0':
+                zeros_in_left += 1
+            else:
+                ones_in_right -= 1
+        
+            max_score = max(max_score, zeros_in_left + ones_in_right)
+    
+        return max_score
