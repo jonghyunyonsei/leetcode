@@ -1,0 +1,18 @@
+class Solution:
+    def countBalls(self, lowLimit: int, highLimit: int) -> int:
+        from collections import defaultdict
+    
+        def sum_of_digits(n):
+            total = 0
+            while n > 0:
+                total += n % 10
+                n //= 10
+            return total
+    
+        box_count = defaultdict(int)
+    
+        for ball_number in range(lowLimit, highLimit + 1):
+            box_number = sum_of_digits(ball_number)
+            box_count[box_number] += 1
+    
+        return max(box_count.values())
