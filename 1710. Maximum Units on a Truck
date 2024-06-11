@@ -1,0 +1,16 @@
+class Solution:
+    def maximumUnits(self, boxTypes: List[List[int]], truckSize: int) -> int:
+        boxTypes.sort(key=lambda x: x[1], reverse=True)
+    
+        total_units = 0
+        remaining_capacity = truckSize
+    
+        for numberOfBoxes, unitsPerBox in boxTypes:
+            if remaining_capacity == 0:
+                break
+        
+            boxes_to_add = min(numberOfBoxes, remaining_capacity)
+            total_units += boxes_to_add * unitsPerBox
+            remaining_capacity -= boxes_to_add
+    
+        return total_units
