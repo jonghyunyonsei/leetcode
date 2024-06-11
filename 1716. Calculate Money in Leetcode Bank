@@ -1,0 +1,14 @@
+class Solution:
+    def totalMoney(self, n: int) -> int:
+        total_savings = 0
+    
+        complete_weeks = n // 7
+        remaining_days = n % 7
+    
+        for i in range(complete_weeks):
+            total_savings += (7 * i) + (1 + 2 + 3 + 4 + 5 + 6 + 7)  
+    
+        for i in range(remaining_days):
+            total_savings += (complete_weeks + 1) + i
+    
+        return total_savings
